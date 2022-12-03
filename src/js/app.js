@@ -9,15 +9,24 @@ window.addEventListener("DOMContentLoaded", () => {
     alert("💣");
   });
 
-  const img = document.getElementById("img1");
+  const img = document.querySelector(".image");
+  let scale = false
   img.addEventListener("click", () => {
-    img.style.transform = "scale(2)";
-    img.style.transition = "transform 0.25s ease";
-  })
-  // Set image size to original
-  const reset = document.querySelector(".reset")
-  reset.addEventListener("click", () => {
-    img.style.transform = "scale(1)";
-    img.style.transition = "transform 0.25s ease"
+    if (scale) {
+      img.style.transform = "scale(1)"
+      img.style.transition = "transform 0.25s ease";
+      scale = false;
+      return;
+    }
+
+    if (!scale) {
+      img.style.transform = "scale(2)";
+      img.style.transition = "transform 0.25s ease";
+      scale = true;
+      return;
+    }
+    console.log(scale);
+
+
   })
 });
